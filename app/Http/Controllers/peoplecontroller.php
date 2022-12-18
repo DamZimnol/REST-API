@@ -36,7 +36,7 @@ class peoplecontroller extends Controller
      */
     public function store(Request $request)
     {
-        $people = People::create($request->all());
+        $people = people::create($request->all());
 
         return response(new PeopleResource($people), 201);
     }
@@ -72,7 +72,7 @@ class peoplecontroller extends Controller
      */
     public function update(Request $request, people $people)
     {
-        $peoplefind = People::find($id);
+        $peoplefind = people::find($id);
 
         $peoplefind->update(['name' => $name]);
 
@@ -87,7 +87,7 @@ class peoplecontroller extends Controller
      */
     public function destroy(people $people)
     {
-        $people = People::destroy($id);
+        $people = people::destroy($id);
 
         return response('Record deleted', 204);
     }
