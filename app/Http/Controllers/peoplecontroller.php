@@ -72,11 +72,11 @@ class peoplecontroller extends Controller
      */
     public function update(Request $request, people $people)
     {
-        $people = People::find($id);
+        $peoplefind = People::find($id);
 
-        $people->update(['name' => $name]);
+        $peoplefind->update(['name' => $name]);
 
-        return response($people, 200);
+        return response($peoplefind, 200);
     }
 
     /**
@@ -89,6 +89,6 @@ class peoplecontroller extends Controller
     {
         $people = People::destroy($id);
 
-        return response('Rekord został usunięty', 204);
+        return response('Record deleted', 204);
     }
 }
