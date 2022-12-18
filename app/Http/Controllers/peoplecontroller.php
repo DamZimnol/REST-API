@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\people;
 use Illuminate\Http\Request;
 
 class peoplecontroller extends Controller
@@ -13,7 +14,8 @@ class peoplecontroller extends Controller
      */
     public function index()
     {
-        //
+        $people=people::all();
+        return response(\App\Http\Resources\peopleresource::collection($people),200);
     }
 
     /**
@@ -27,12 +29,36 @@ class peoplecontroller extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Store a newly created resource in storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function store(Request $request)
+    {
+        $people = People::create($request->all());
+
+        return response(new PeopleResource($people), 201);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\people  $people
+     * @return \Illuminate\Http\Response
+     */
+    public function show(people $people, int $id)
+    {
+        return response(people::find($id),200);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\people  $people
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(people $people)
     {
         //
     }
@@ -41,22 +67,28 @@ class peoplecontroller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\people  $people
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, people $people)
     {
-        //
+        $people = People::find($id);
+
+        $people->update(['name' => $name]);
+
+        return response($people, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\people  $people
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(people $people)
     {
-        //
+        $people = People::destroy($id);
+
+        return response('Rekord został usunięty', 204);
     }
 }

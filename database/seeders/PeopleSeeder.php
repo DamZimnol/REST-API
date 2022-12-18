@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Str;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PeopleSeeder extends Seeder
 {
@@ -19,7 +22,7 @@ class PeopleSeeder extends Seeder
                 'name'=> Str::random(12),
                 'surname'=> Str::random(25),
                 'age'=> rand(0,99),
-                'telephone number'=> rand(1000000,999999999),
+                'telephonenumber'=> rand(1000000,999999999),
                 'street'=> Str::random(25),
                 'town'=> Str::random(25),
                 'country'=> Str::random(25)
