@@ -17,10 +17,10 @@ class CreatePeopleTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->string('age');
+            $table->int('age');
             $table->int('telephone number');
             $table->string('street');
-            $table->string('twon');
+            $table->string('town');
             $table->string('country');
             $table->timestamps();
         });
