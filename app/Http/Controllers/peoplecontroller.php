@@ -89,6 +89,6 @@ class peoplecontroller extends Controller
     {
         $people = People::destroy($id);
 
-        return response('Rekord został usunięty', 204);
+        return response('Record deleted', 204);
     }
 }
